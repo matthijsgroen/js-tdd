@@ -45,10 +45,10 @@ export function add(a, b) {
 Add the following to `test/calculator-fns.spec.js`
 
 ```js
-import { expect} from "chai";
+import { expect } from "chai";
 import { add } from "../src/calculator-fns";
 
-describe("Calculator", () => {
+describe("Calculator functions", () => {
   describe("adding numbers", () =>
     it("1 + 1 = 2", () =>
       expect(add(1, 1)).to.eql(2)
