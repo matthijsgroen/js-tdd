@@ -19,8 +19,9 @@ yarn --dev add chai mocha babel-core babel-preset-latest babel-preset-stage-3
 
 ```
 
-add the following to the created `package.json`. This is needed to
-run the tests.
+Add the following to the created `package.json`. This is needed to
+run the tests. We use [mocha][mocha] to run the tests, and
+[chai][chai] to write the test definitions (assertions).
 
 ```json
 "scripts": {
@@ -76,7 +77,5 @@ Functions to implement:
 - times
 - square
 
-
-
-
-
+[chai]: http://chaijs.com/
+[mocha]: https://mochajs.org/
