@@ -1,8 +1,8 @@
-# Learning TDD in javascript
+# You don't know ![SJ](sj.png)it
 
-How to start a simple JS playground from scratch?
+How to start a simple Javascript playground from scratch?
 
-How to properly write JS tests?
+How to properly write Javascript tests?
 
 What kind of weird tricks has JS under the hood?
 
