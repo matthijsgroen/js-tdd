@@ -1,13 +1,23 @@
 # You don't know ![SJ](sj.svg)it
 
-How to start a simple Javascript playground from scratch?
+This is a small course in getting to know Javascript better.
+Basic Javascript knowledge is required. This course
+will let you play around with new and old Javascript concepts.
 
-How to properly write Javascript tests?
+Topic we will cover:
 
-What kind of weird tricks has JS under the hood?
-
-Learning modern js is cool and all that, but what about encountering all
-kinds of 'old' js? how does that work?
+- How to start a simple Javascript playground from scratch?
+- How to properly write Javascript tests?
+- Working with functions, objects and classes
+- Working with immutability
+- Working with Arrays and loops
+- Working with control flows
+- Working with exceptions
+- Working with promises
+- Working with a lot of 'out-of-the-box' JS functions, like `Math`,
+  `Regexp`
+- Experimenting with JS, doing some measurements for performance, this
+  should improve debugging skills and insights
 
 Goal is to learn a lot of legacy AND modern JS through a series of
 coding exercises focussing on the language, and later some architecture
