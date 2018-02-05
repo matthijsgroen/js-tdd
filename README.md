@@ -1,4 +1,4 @@
-# You don't know ![SJ](sj.png)it
+# You don't know ![SJ](sj.svg)it
 
 How to start a simple Javascript playground from scratch?
 
