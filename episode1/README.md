@@ -13,14 +13,21 @@ mkdir calculator
 cd calculator
 git init .
 yarn init
-# Fill in the details
+# Press enter to use the defaults
+```
 
+We have created a directory, navigated into it and initiated an empty GIT repository. A lot of
+
+```sh
 mkdir test
 mkdir src
 
 yarn --dev add chai mocha babel-core babel-preset-latest babel-preset-stage-3
-
 ```
+
+Here we have created a `test` directory for your tests and a `src` directory for your source code.
+The last `yarn` command adds development packages as dependencies. You can find these back in the
+`package.json` file.
 
 Add the following to the created `package.json`. This is needed to
 run the tests. We use [mocha][mocha] to run the tests, and
@@ -28,14 +35,14 @@ run the tests. We use [mocha][mocha] to run the tests, and
 
 ```json
 "scripts": {
-    "test": "mocha --require babel-core/register"
-  },
-  "babel": {
-    "presets": [
-      "stage-3",
-      "latest"
-    ]
-  },
+  "test": "mocha --require babel-core/register"
+},
+"babel": {
+  "presets": [
+    "stage-3",
+    "latest"
+  ]
+},
 ```
 
 Add the following to `src/calculator-fns.js`
@@ -86,5 +93,6 @@ Functions to implement:
 - times
 - square
 
+[babel]: https://babeljs.io/
 [chai]: http://chaijs.com/
 [mocha]: https://mochajs.org/
