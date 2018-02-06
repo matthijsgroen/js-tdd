@@ -2,8 +2,11 @@
 
 ## Setup a JS playground from scratch
 
-Setup a total blank GIT repo, with a JS project that can run tests,
+We will setup a total blank GIT repo, with a JS project that can run tests,
 and where you can use the latest ES standard.
+
+Execute the following commands in the terminal to setup a minimal work
+environment:
 
 ```sh
 mkdir calculator
@@ -50,11 +53,17 @@ import { add } from "../src/calculator-fns";
 
 describe("Calculator functions", () => {
   describe("adding numbers", () =>
+
+    // This test should pass, since we have an implementation for
+    // the `add` function
     it("1 + 1 = 2", () =>
       expect(add(1, 1)).to.eql(2)
     )
   );
 
+
+  // This test should fail, since we have not yet implemented
+  // the `times` function
   describe("multiplying numbers", () =>
     it("2 * 3 = 6", () =>
       expect(times(2, 3)).to.eql(6)
@@ -68,7 +77,7 @@ You should now be able to run the tests using `yarn test`. You can also run the 
 
 ## Exercise
 
-Add the followin functionality, by creating the tests first, watch them fail,
+Add the following functionality, by creating the tests first, watch them fail,
 and add the implementation later. A failing test for `times` is already added.
 
 Functions to implement:
