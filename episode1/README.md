@@ -2,7 +2,7 @@
 
 ## Setup a JS playground from scratch
 
-We will setup a total blank GIT repo, with a JS project that can run tests,
+We will setup a total blank [GIT][git] repo, with a JS project that can run tests,
 and where you can use the latest ES standard.
 
 Execute the following commands in the terminal to setup a minimal work
@@ -13,10 +13,26 @@ mkdir calculator
 cd calculator
 git init .
 yarn init
-# Press enter to use the defaults
+# Press enter to use the defaults, or fill in your own details
 ```
 
-We have created a directory, navigated into it and initiated an empty GIT repository. A lot of
+We have created a directory, navigated into it and initiated an empty GIT repository. [Yarn][yarn] is
+a package manager and keeps track of all the dependencies you have in your project.
+
+Before we commit we will create a `.gitignore` file, with the following lines inside:
+
+```sh
+/node_modules
+```
+
+You can now make your first GIT commit.
+```sh
+git status
+git add --all
+git commit -m "Initial setup with yarn"
+```
+
+## Let's start coding!
 
 ```sh
 mkdir test
@@ -28,6 +44,10 @@ yarn --dev add chai mocha babel-core babel-preset-latest babel-preset-stage-3
 Here we have created a `test` directory for your tests and a `src` directory for your source code.
 The last `yarn` command adds development packages as dependencies. You can find these back in the
 `package.json` file.
+
+[Babel][babel] is a Javascript compiler that compiles newer ES to browser-compatible Javascript.
+This is necessary because not all browsers support the newer Javascript syntax yet and we do want
+our application to work on those as well.
 
 Add the following to the created `package.json`. This is needed to
 run the tests. We use [mocha][mocha] to run the tests, and
@@ -45,18 +65,24 @@ run the tests. We use [mocha][mocha] to run the tests, and
 },
 ```
 
-Add the following to `src/calculator-fns.js`
+You can make sure this all works running `yarn` in the shell.
+
+You can do another GIT commit, so there is always a point to go back to in case something goes
+wrong. You can run `yarn test` in the shell and it will display a message that there are no tests to
+run, which is correct. So let's add some code.
+
+Add the following to `src/calculator-functions.js`
 
 ```js
 export function add(a, b) {
   return a + b;
 };
 ```
-Add the following to `test/calculator-fns.spec.js`
+Add the following to `test/calculator-functions.spec.js`
 
 ```js
 import { expect } from "chai";
-import { add } from "../src/calculator-fns";
+import { add } from "../src/calculator-functions;
 
 describe("Calculator functions", () => {
   describe("adding numbers", () =>
@@ -76,7 +102,6 @@ describe("Calculator functions", () => {
       expect(times(2, 3)).to.eql(6)
     )
   );
-
 });
 ```
 
@@ -89,10 +114,21 @@ and add the implementation later. A failing test for `times` is already added.
 
 Functions to implement:
 
-- subtract
 - times
+- subtract
 - square
 
+Optional:
+- divide
+- square root
+- exponentiation
+- extract the nth root
+
+Are there ways you can think of to make the tests passing, but without having the
+desired implementation? Is there any duplication or repetition you can spot in your tests or code?
+
+[git]: https://git-scm.com/
+[yarn]: https://yarnpkg.com/
 [babel]: https://babeljs.io/
 [chai]: http://chaijs.com/
 [mocha]: https://mochajs.org/
