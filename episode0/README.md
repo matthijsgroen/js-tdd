@@ -42,7 +42,10 @@ Optionally, to learn more about the Git way of working you can read the followin
 [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/)
 
 ## NodeJS
+TODO
 
+## Yarn
+TODO
 
 [iTerm]: https://www.iterm2.com/
 [homebrew]: https://brew.sh/
