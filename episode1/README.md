@@ -82,7 +82,7 @@ Add the following to `test/calculator-functions.spec.js`
 
 ```js
 import { expect } from "chai";
-import { add } from "../src/calculator-functions;
+import { add } from "../src/calculator-functions";
 
 describe("Calculator functions", () => {
   describe("adding numbers", () =>
