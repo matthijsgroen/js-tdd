@@ -23,9 +23,29 @@ All you need to do in order to install Homebrew is entering the following comman
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+To make sure that the location of Homebrew is in your `$PATH` variable to your `.bash_profile`.
+
+```sh
+export PATH="/usr/local/bin:$PATH"
+```
+
 To test if Homebrew is installed correctly you can try the following command:
 ```sh
 brew -v
+```
+
+Homebrew makes it very easy to install the software you need. If there is a piece of software you
+need check with Homebrew if it is available there. For example if you want to know if Postgres is
+available on Homebrew you can search for it.
+
+```sh
+brew search postgres
+```
+
+It will come up with a list and you can install the software using
+
+```sh
+brew install <name>
 ```
 
 ## GIT
@@ -38,18 +58,52 @@ In order to install it, copy-paste the following command into your terminal:
 brew install git
 ```
 
+To test if your installation was succesfull you can use
+```sh
+git --version
+```
+
 Optionally, to learn more about the Git way of working you can read the following article
 [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/)
 
 ## NodeJS
-TODO
+[NodeJS][nodejs] is a Javascript runtime environment that is build upon Chrome's Javascript Engine.
+It enables us to build Javascript applications that run in the browser of the user.
+
+```sh
+brew install node
+```
+
+To check if the node command is available run the following command:
+
+```sh
+node -v
+```
 
 ## Yarn
-TODO
+In our example applications we are going to be using [Yarn][yarn] to manage our dependencies and
+packages in a JSON file.
+
+To install simply execute the following command.
+
+```sh
+brew install yarn
+```
+
+To check your installation, use the following command:
+
+```sh
+yarn -v
+```
+
+## Versions used at time of writing
+Homebrew: 1.5.3
+GIT: 2.16.1
+NodeJS: 9.5.0
+Yarn: 1.3.2
 
 [iTerm]: https://www.iterm2.com/
 [homebrew]: https://brew.sh/
 [git]: https://git-scm.com/
-
-
-
+[nodejs]: https://nodejs.org/en/
+[yarn]: https://yarnpkg.com/en/
