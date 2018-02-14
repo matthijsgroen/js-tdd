@@ -22,7 +22,7 @@ a package manager and keeps track of all the dependencies you have in your proje
 Before we commit we will create a `.gitignore` file, with the following lines inside:
 
 ```sh
-/node_modules
+node_modules/
 ```
 
 You can now make your first GIT commit.
