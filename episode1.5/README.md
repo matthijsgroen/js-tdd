@@ -255,6 +255,9 @@ Exercises:
 - Multiplication
 - Division
 
+You can find an implementation of the calculator in [this repository][repository]
+
 [tdd-explained]: https://github.com/matthijsgroen/js-tdd/tree/master/extras/tdd-explained.md
 [arithmetic]: https://en.wikipedia.org/wiki/Arithmetic
 [4rulesofsimpledesign]: https://www.theguild.nl/4-rules-of-simple-design/
+[repository]: https://github.com/hacklor/calculator-tdd
