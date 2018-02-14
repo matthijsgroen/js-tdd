@@ -2,10 +2,14 @@
 **I cut into line 73 of episode 1**
 
 ## What are we going to build?
+Our goal is to build a calculator that can do basic arithmetics, like addition, subtraction,
+multiplication and division. So we are going to build functions that implements those operations.
 
-- After each step in TDD  (red, green, refactor) we are doing a git commit.
+Here are some tips when building the operations:
+- After each step (red, green, refactor) we are doing a git commit.
 - To prevent typing `yarn test` each time, we can use `yarn test --watch`
-- Normally the following steps would take mere seconds! It's a micro cycle!
+- Normally the following steps would take mere seconds! It's a micro cycle! For now, please be
+patient.
 
 ## Before we begin...
 Before I even start writing anything I want to know if my environment is set up correctly by writing a very silly test and run it. If there is anything wrong I will get a warning or error.
@@ -227,6 +231,14 @@ arithmetics. So let's rename the `describe` and even the files.
 
 We want our code to reflect what it is and does as closely as we can!
 
+One last case I can think of is that "2 + 3" has the same result as "3 + 2", so let's make sure that
+is the case by adding an expectation for that. It might not be very important for addition, but with
+subtraction it is important. We do not accidently mix the parameters!
+
+```js
+expect(add(3, 2)).to.eql(5)
+```
+
 ## Conclusion
 This is quite an episode for something that seems very straight forward, but there are many
 considerations here. For me it takes only a few minutes to do all the steps above with all the
@@ -236,7 +248,7 @@ proficient it will take a lot less time. The key here is to practise.
 So below are a few exercises you can do yourself. Try to take tiny steps seeing your tests fail and
 pass each time. What helps is taking into account [the 4 rules of simple design][4rulesofsimpledesign].
 
-Exercise:
+Exercises:
 - Subtraction
 - Multiplication
 - Division
