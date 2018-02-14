@@ -1,6 +1,8 @@
 # Episode 1.5: Building a calculator using TDD
 **I cut into line 73 of episode 1**
 
+Please read the post that [explains the theory of TDD here][tdd-explained]
+
 ## What are we going to build?
 Our goal is to build a calculator that can do basic arithmetics, like addition, subtraction,
 multiplication and division. So we are going to build functions that implements those operations.
@@ -253,5 +255,6 @@ Exercises:
 - Multiplication
 - Division
 
+[tdd-explained]: https://github.com/matthijsgroen/js-tdd/tree/master/extras/tdd-explained.md
 [arithmetic]: https://en.wikipedia.org/wiki/Arithmetic
 [4rulesofsimpledesign]: https://www.theguild.nl/4-rules-of-simple-design/
