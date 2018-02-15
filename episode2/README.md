@@ -1,20 +1,23 @@
 # Episode 2: Building the basic operations of the calculator using TDD
-Please read the post that [explains the theory of TDD here][tdd-explained]
+Before we start diving into the code I recommend taking a moment to read the [explanation of TDD
+here][tdd-explained]. Take your time to make sure you understand the Cycle of TDD.
 
 ## What are we going to build?
 Our goal is to build a calculator that can do basic arithmetics, like addition, subtraction,
 multiplication and division. So we are going to build functions that implements those operations.
 
 Here are some tips when building the operations:
-- After each step (red, green, refactor) we are doing a git commit.
-- To prevent typing `yarn test` each time, we can use `yarn test --watch`
-- Normally the following steps would take mere seconds! It's a micro cycle! For now, please be
-patient.
+- After each step in the cycle (red, green, refactor) do a git commit, preferable in a separate
+branch. This way you always have a point to get back to.
+- To prevent typing `yarn test` each time, we can use `yarn test --watch`. This will automatically
+rerun the tests when changes are detected.
+- Normally the steps in the cycle would take only seconds! It's a micro cycle! For now, please be
+patient, and follow along.
 
 ## Before we begin...
-Before I even start writing anything I want to know if my environment is set up correctly by writing a very silly test and run it. If there is anything wrong I will get a warning or error.
+Before I even start writing anything I want to know if our environment is set up correctly by writing a very silly test and run it. If there is anything wrong we will get a warning or error.
 
-We start by running `yarn test`. It will start running yarn but warn us that there are no test files
+We start by running `yarn test`. It will do a test run, and warn us that there are no test files
 found. So let's create the first test file in the `test` directory.
 
 In `test/calculator.spec.js` add the following code:
