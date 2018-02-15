@@ -247,9 +247,14 @@ the `add` method and expect it to work with negative numbers. Is it a good idea 
 Maybe, maybe not. But at least we have a signal that we need to consider that!
 
 ```js
-expect(add(3, 2)).to.eql(5)
-expect(add(-2, 3)).to.eql(1)
-expect(add(-5, -3)).to.eql(-8)
+it("adds two integers", () => {
+  expect(add(1, 2)).to.eql(3)
+  expect(add(2, 3)).to.eql(5)
+  expect(add(3, 2)).to.eql(5)
+  expect(add(-2, 3)).to.eql(1)
+  expect(add(2, -3)).to.eql(-1)
+  expect(add(-5, -3)).to.eql(-8)
+});
 ```
 
 ## Conclusion
@@ -265,12 +270,15 @@ These steps and considerations become more important once it gets more complex!
 So below are a few exercises you can do yourself. Try to take tiny steps seeing your tests fail and
 pass each time. What helps is taking into account [the 4 rules of simple design][4rulesofsimpledesign].
 
-Exercises:
-- Subtraction
-- Multiplication
-- Division
+## Exercises
+Implement the following basic arithmetic functions strictly using the tiny steps as described above.
+What special cases can you think of?
 
-You can find an implementation of the calculator in [this repository][repository]
+- Subtraction (minus)
+- Multiplication (times)
+
+You can find an implementation of the methods in [this repository][repository], where you can also
+check if you have covered all the cases.
 
 [tdd-explained]: https://github.com/matthijsgroen/js-tdd/tree/master/extras/tdd-explained.md
 [arithmetic]: https://en.wikipedia.org/wiki/Arithmetic
