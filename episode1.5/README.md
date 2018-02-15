@@ -233,12 +233,23 @@ arithmetics. So let's rename the `describe` and even the files.
 
 We want our code to reflect what it is and does as closely as we can!
 
-One last case I can think of is that "2 + 3" has the same result as "3 + 2", so let's make sure that
+One case I can think of is that "2 + 3" has the same result as "3 + 2", so let's make sure that
 is the case by adding an expectation for that. It might not be very important for addition, but with
 subtraction it is important. We do not accidently mix the parameters!
 
+Also we can add a few expections on negative numbers. This builds a bit of a regression for the
+future. Can you think of a reason why we would want to do that?
+
+In case we start making bigger refactors we still want to make sure that all the
+functionality works and we don't accidently make the result absolute. Or maybe 5 months from now a new requirement
+comes in that all additions should return absolute results. We have already build functionality upon
+the `add` method and expect it to work with negative numbers. Is it a good idea to just change it?
+Maybe, maybe not. But at least we have a signal that we need to consider that!
+
 ```js
 expect(add(3, 2)).to.eql(5)
+expect(add(-2, 3)).to.eql(1)
+expect(add(-5, -3)).to.eql(-8)
 ```
 
 ## Conclusion
@@ -246,6 +257,10 @@ This is quite an episode for something that seems very straight forward, but the
 considerations here. For me it takes only a few minutes to do all the steps above with all the
 considerations. It's like learning a skill, so it takes time and patience to learn it. Once
 proficient it will take a lot less time. The key here is to practise.
+
+Some things in this episode might sound very silly now, this is also because the use case is very
+simply for now. This means you can spend your attention learning the steps and what to think about.
+These steps and considerations become more important once it gets more complex!
 
 So below are a few exercises you can do yourself. Try to take tiny steps seeing your tests fail and
 pass each time. What helps is taking into account [the 4 rules of simple design][4rulesofsimpledesign].
