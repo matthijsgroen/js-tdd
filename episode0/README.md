@@ -97,10 +97,11 @@ yarn -v
 ```
 
 ## Versions used at time of writing
-Homebrew: 1.5.3
-GIT: 2.16.1
-NodeJS: 9.5.0
-Yarn: 1.3.2
+
+* Homebrew: 1.5.3
+* GIT: 2.16.1
+* NodeJS: 9.5.0
+* Yarn: 1.3.2
 
 [iTerm]: https://www.iterm2.com/
 [homebrew]: https://brew.sh/
