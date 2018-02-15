@@ -4,7 +4,7 @@
 TDD is a programming discipline whereby programmers drive the design and the implementation of their code by using tests. It all starts with the red-green-refactor cycle,
 so I will explain it below.
 
--------------- Insert image ------------------
+![The Cycle of TDD][tdd-cycle]
 
 ### Red
 Create a test and see it fail.
@@ -59,3 +59,5 @@ When deciding which step next to take I keep make a list of cases so that I don'
 
 ### Sources
 http://www.jamesshore.com/Blog/Red-Green-Refactor.html
+
+[tdd-cycle]: https://github.com/hacklor/js-tdd/tree/master/extras/tdd_cycle.jpg
