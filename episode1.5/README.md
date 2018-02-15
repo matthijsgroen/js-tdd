@@ -276,6 +276,7 @@ What special cases can you think of?
 
 - Subtraction (minus)
 - Multiplication (times)
+- Square (square)
 
 You can find an implementation of the methods in [this repository][repository], where you can also
 check if you have covered all the cases.
