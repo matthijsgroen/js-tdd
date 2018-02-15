@@ -1,6 +1,4 @@
-# Episode 1.5: Building a calculator using TDD
-**I cut into line 73 of episode 1**
-
+# Episode 2: Building the basic operations of the calculator using TDD
 Please read the post that [explains the theory of TDD here][tdd-explained]
 
 ## What are we going to build?
