@@ -36,7 +36,7 @@ These three laws describes the cycle in a different way, but in essence mean the
 
 ## How long does one cycle take?
 There are no strict rules here. The goal is to make small steps that don't take very long. Having said that, I've seen cycles of seconds,
-but also longer because I had to think about which test to write next. When it takes me a long time two write a test or have to write the implementation
+but also longer because I had to think about which test to write next. When it takes me a long time to write a test or have to write the implementation
 I see that as a sign that there might be a different simpler approach to take.
 
 ## Transformation Priority Premise (TPP)
