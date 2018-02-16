@@ -43,6 +43,9 @@ As you can see, the `return` statement is gone. This is because we don't
 use the `{}` for the body, and thus is it a single statement. Single statements always have an
 implicit return of its result. If there is no result to be returned, it will return `undefined`.
 
+## Exercise
+Refactor the other functions in the same lambda style. Make sure you run the test while doing so.
+
 ## Macro cycle of TDD
 In the previous episodes we strictly used the red-green-refactor cycle of TDD.
 Here we are refactoring our code even though we haven't written a failing test and made that pass first.
@@ -63,10 +66,8 @@ Try avoiding refactoring the test code at the same time as the production code (
 experience has taught me that once it starts breaking it's very hard to tell if it's the test that
 is broken or the implementation.
 
----- TODO -----
-
-
 ## Refactoring the square method
+Duplication in square method of knowledge
 So, how did the `square` method ended up?
 
 There are a lot of possible ways for it:
