@@ -1,3 +1,5 @@
+> This episode is still **Work in progress**
+
 # Building a calculator, episode 3
 
 After finishing [episode 2][episode2] you should have a small codebase
