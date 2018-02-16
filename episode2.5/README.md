@@ -67,16 +67,34 @@ experience has taught me that once it starts breaking it's very hard to tell if 
 is broken or the implementation.
 
 ## Refactoring the square method
-Duplication in square method of knowledge
-So, how did the `square` method ended up?
+So, how did the `square` method end up?
 
-There are a lot of possible ways for it:
+There are a few possible ways for it:
 
 ```js
-const square = a => Math.pow(a, 2)
-const square = a => times(a, a);
-const square = a => a * a;
+Math.pow(number, 2)
+number * number
+times(number, number)
 ```
+
+Let's go over each one.
+
+The `Math.pow(number, 2)` is technically what the square of the number is. We are using the
+`Math.pow` function that Javascript provides us. Which works great, but might be a bit overkill. A
+square is basically `number * number`, so that seems like a good idea.
+
+The `number * number` looks very similar to the implementation of the `times` function. In the blog
+about the [4 Rules of Simple Design][4rosd] there is a rule about duplication. It states that an
+application shouldn't contain any **knowledge** duplication. The implementation of the `square`
+method is a knowledge duplication of the implementation of the `times` method. So let's refactor
+that by calling the `times` method in our `square` method.
+
+```js
+export const square = (number) => times(number, number)
+```
+
+--- TODO ---
+## Calculator
 
 Now we can do "calculations". But its not a calculator *yet*.
 
@@ -141,3 +159,4 @@ Just go with the most simplest form you can think of for now.
 
 [episode2]: https://github.com/matthijsgroen/js-tdd/tree/master/episode2
 [lamda]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+[4rosd]: https://www.theguild.nl/4-rules-of-simple-design/
