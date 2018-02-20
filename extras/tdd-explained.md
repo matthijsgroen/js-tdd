@@ -60,4 +60,4 @@ When deciding which step next to take I keep make a list of cases so that I don'
 ### Sources
 http://www.jamesshore.com/Blog/Red-Green-Refactor.html
 
-[tdd-cycle]: https://github.com/hacklor/js-tdd/tree/master/extras/tdd_cycle.jpg
+[tdd-cycle]: https://github.com/matthijsgroen/js-tdd/blob/master/extras/images/tdd-cycle.jpg
