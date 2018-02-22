@@ -213,7 +213,59 @@ object
   .doSomething();
 ```
 
-We are going to be using the same for our `add` method.
+We are going to be using the same for our `add` method. So let's add a test that does this.
+
+RED:
+
+```js
+it("can chain adding multiple numbers", () => {
+  calculator.add(1).add(3).add(5)
+  expect(calculator.result()).to.eql(9)
+});
+```
+
+This will fail with a `TypeError` and there is a simple fix for this by returning `this` in the add
+method. And hopefully this will also explain the cryptic explanation before. "the modifier methods
+return the host object". Within an object `this` in Javascript refers to the host object. Another
+way to look at it is that it refers to itself.
+
+GREEN:
+
+```js
+add(number) {
+  this.res = add(this.res, number);
+  return this;
+}
+```
+
+REFACTOR:
+
+The "can add multiple numbers" test is now a duplicate of the chaining test, the chaining test just
+does a little bit more. So let's remove the following test.
+
+```js
+it("can add multiple numbers", () => {
+  calculator.add(2)
+  calculator.add(6)
+  expect(calculator.result()).to.eql(8)
+});
+```
+
+Another refactor has to do with naming, which I came to realise later. But better late then never,
+so here it goes. The internal variable that holds the result is called `res` now. This name is not
+complete and might be confusing for someone who reads the code for the first time (or your futureself for that matter).
+What is "res"? Is it short for something? Resolution? Resistencia International Airport? Renewable Energy Sources?
+
+No! It's result! So let's call it `result`. Try to rename it to result and see what happens when you
+run the tests?
+
+Javascript has a conflict in naming between the method `result()` and the variable. A way around
+this has became a convention to write internally used variables and methods with the underscore
+prefix. So our result will become `_result`, so let's refactor to that.
+
+## Getting the result
+
+
 
 ----
 Focus only on making the first test pass.
