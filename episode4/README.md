@@ -102,7 +102,7 @@ GREEN:
 ```js
 import { add } from "./operations";
 
-export class Calculator{
+export class Calculator {
   constructor() {
     this.res = 0;
   }
@@ -141,61 +141,81 @@ describe("Calculator", () => {
 });
 ```
 
-TODO: Explain 3A's
-- Arrange
-- Act
-- Assert
+## The 3As of a Unit Test
+The 3As stand for Arrange-Act-Assert. It's a pattern for arranging and formatting code of a test.
+It clearly separates the what is being tested from the setup that is required and the verification
+steps. It helps communicate the intention of the test to the reader and the behaviour of the code
+under test.
 
+- *Arrange* all necessary preconditions and inputs
+- *Act* on the object or method under test
+- *Assert* that the expected results have occured
 
-TODO:
-- Result method versus exposing a result attribute
+In our previous test we see this pattern in the initial `it can add a number` in the RED stage.
+
+- *Arrange*: First create a calculator object in order to call the method under test, namely add.
+- *Act*: Call the method
+- *Assert*: Verify the resulting behaviour of the test
+
+(Technically there is an *Act* part in the `expect(...)` line of the test. Can you spot what that is?)
+
+The refactor step also has the same pattern, but the duplication in the tests have been moved to the
+`beforeEach`. When *all* the tests have the same setup you it pays off to refactor that. When you
+then need to change something you only need to do that in one place.
+
+Can you think of reasons why the setup would change? What would be the cost if you hadn't refactored
+it?
+
+## Adding multiple numbers
+
+RED:
 
 ```js
-// test/calculator.js
-import { expect } from "chai";
-
-describe("Calculator", () => {
-
-  // only run this test for now
-  it.only("has a default result of 0", () =>
-    expect(calculator.result).to.eql(0);
-  );
-
-  xit("can add numbers", () => {
-    expect(calculator.result).to.eql(0);
-    calculator.add(10)
-    expect(calculator.result).to.eql(10);
-  });
-
-  xit("can chain commands", () => {
-    expect(calculator.result).to.eql(0);
-    calculator.times(2).add(10).times(2)
-    expect(calculator.result).to.eql(20);
-  });
-
+it("can add multiple numbers", () => {
+  calculator.add(2)
+  calculator.add(6)
+  expect(calculator.result()).to.eql(8)
 });
 ```
 
-This block of tests has no 'setup' structure. Normally a test has 3 A's.
-
-- Arrange
-- Act
-- Assert
-
-You can add a single setup block that is repeated for each test by creating a 'before' step.
+GREEN:
 
 ```js
-// test/calculator.js
-
-describe("Calculator", () => {
-  let calculator;
-
-  beforeEach(() => {
-    // ... setup the proper 'calculator' to make the tests pass.
-  });
-});
+add(number) {
+  this.res = add(this.res, number)
+}
 ```
 
+REFACTOR:
+
+Right now there is nothing to refactor. You could say that there are two lines that do the same
+thing in two different tests, `calculator.add(2)`. I do not call this duplication, because the *act*
+part as a whole is different. Refactoring should generalize parts of the code or test. You cannot
+really generalize adding 2.
+
+## Method Chaining
+In short Method Chaining is to make the modifier methods return the host object,
+so that multiple modifiers can be invoked in a single expression. Let's explain that with an
+example.
+
+Compare the following code snippet:
+```js
+object.doThis();
+object.doThat();
+object.doSomething();
+```
+
+With this:
+```js
+object
+  .doThis()
+  .doThat()
+  .doSomething();
+```
+
+We are going to be using the same for our `add` method.
+
+----
 Focus only on making the first test pass.
 
 There are actually a lot of ways to implement just enough to make the first test pass.
