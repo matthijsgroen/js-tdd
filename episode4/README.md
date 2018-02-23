@@ -264,17 +264,120 @@ this has became a convention to write internally used variables and methods with
 prefix. So our result will become `_result`, so let's refactor to that.
 
 ## Getting the result
+There are multiple ways of getting the result, so far we have defined it as a function. Another
+option is to use a plain property and exposing it, like so:
 
+```js
+constructor() {
+  this.result = 0;
+}
 
+// No result() method
+```
 
-----
-Focus only on making the first test pass.
+Try that out in your code to see what happens. What can we not do with this property outside of the
+calculator?
 
-There are actually a lot of ways to implement just enough to make the first test pass.
-There are at least 4 different ways to create this 'object' needed to make this pass.
-Just go with the most simplest form you can think of for now.
+What if we do this in one of our tests:
 
-* Can you make all the tests pass?
+```js
+calculator.result = 4;
+```
 
+In our example we have used the function to indicate the internal attribute `_result` to be private.
+
+```js
+result() {
+  return this._result;
+}
+```
+
+Javascript doesn't have the concept of private, so we need to develop the discipline to handle it as such ourselves.
+Technically we can still manipulate the `_result` however. But don't... just don't... you'll unleash
+the wrath of Chtulu.
+
+So, let's build a (temporary) test to demonstrate the differences. Tests are not only great ways to
+verify your code, but also to experiment. Just make sure start without any other changes in your git
+repository. This will make it very easy to go back.
+
+In `test/calculator.spec.js` add the following code:
+
+```js
+it.only("can access the result", () => {
+  calculator.add(2)
+
+  expect(calculator._result).to.eql(2)
+  expect(calculator.result()).to.eql(2)
+  // expect(calculator.result).to.eql(2)
+});
+```
+
+There are three things to note.
+
+The first one is that the test starts with `it.only`. This means that
+it will be the only test that runs. The second one is that last assertion is commented out. Try and
+see what happens when you remove the comment.
+
+Lastly, the first assertion shows that the `_result` attribute in the calculator object is exposed
+and theoretically can be used outside the calculator object. But just because you can doesn't mean
+that you should.
+
+So what happens when we change the implementation of the result function to this:
+
+```js
+get result() {
+  return this._result;
+}
+```
+
+Which assertions do you have to comment / uncomment to still keep the test passing?
+
+Since ES5 there is a way to define getters and setters. This will make the name of the method available
+to be accessed as an attribute. So that the above example of the `result` getter can be accessed as:
+
+```js
+calculator.result
+```
+
+The use of getters and setters on *properties* of a class is common.
+
+The lesson here is that there are multiple ways and each has it's advantages and drawbacks.
+Experiment with your code. Even if you have decided to go one way initially, it doesn't mean that
+you cannot change your mind later!
+
+With tests and making tiny changes it should be relatively easy to go in a different direction.
+
+## Exercise: Refactor to getter
+Now refactor our code and test to use the getter. We would take tiny steps, changing it one test at
+the time and see the first one pass. Then move on to the next. Try to avoid making a big change.
+
+Hint: Revert your code to the point before the experimentation and make sure all tests are running.
+
+## Exercise: Implement other operations
+Add the other operations to the calculator class using TDD. Make sure you can chain the methods.
+
+- Subtraction (minus)
+- Multiplication (times)
+- Square (square)
+
+What if you implement one operation using a getter from the beginning? And what if you don't? Does
+it have a large impact? Experiment with that.
+
+## Final words before we move on to the next episode
+YAY! You have made it through 4 episodes (okay, technically 5, we started counting at 0 like true programmers ;) )
+and you have a foundation in with ES6 classes and some JS basics. You have also learned the stepping
+stones of TDD.
+
+In the previous episodes we have spent a lot of time on the cycle of TDD and how to break it up in tiny pieces.
+From now on we will move even faster and skip a few steps in the episode, because we trust that
+you have a feeling about how to do this from now on.
+
+If you want to know all about the ES6 features and syntax, you can look go [here][es6-features].
+
+Also, if you want a more elaborate course on TDD you can visit [the online training by J.B. Rainsberger][tdd-training].
+
+[es6-features]: http://es6-features.org
 [es6-classes]: http://es6-features.org/#ClassDefinition
+[es-getters]: http://es6-features.org/#GetterSetter
 [4rosd]: https://www.theguild.nl/4-rules-of-simple-design/
+[tdd-training]: https://online-training.jbrains.ca
