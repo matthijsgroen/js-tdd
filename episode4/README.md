@@ -380,6 +380,12 @@ describe("Regression test", () => {
 });
 ```
 
+**Note:**
+Technically speaking the result should not 100, but -9. Do you know why?
+
+For now we assume that each command is executed immediately, which we do. We haven't implemented any
+functionality about the mathematical order or operations.
+
 ## Final words before we move on to the next episode
 YAY! You have made it through 4 episodes (okay, technically 5, we started counting at 0 like true programmers ;) )
 and you have a foundation in with ES6 classes and some JS basics. You have also learned the stepping
