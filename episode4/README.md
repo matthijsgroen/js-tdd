@@ -363,6 +363,23 @@ Add the other operations to the calculator class using TDD. Make sure you can ch
 What if you implement one operation using a getter from the beginning? And what if you don't? Does
 it have a large impact? Experiment with that.
 
+When you are finished, you can add the following regression test. Is this passing? If not, find out
+why and what test you have missed in your implementation of the operations.
+
+```js
+describe("Regression test", () => {
+	it("can combine multiple chained commands", () => {
+		calculator
+			.add(7)
+			.subtract(2)
+			.square()
+			.multiply(4)
+
+		expect(calculator.result).to.eql(100)
+	});
+});
+```
+
 ## Final words before we move on to the next episode
 YAY! You have made it through 4 episodes (okay, technically 5, we started counting at 0 like true programmers ;) )
 and you have a foundation in with ES6 classes and some JS basics. You have also learned the stepping
