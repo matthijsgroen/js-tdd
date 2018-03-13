@@ -260,16 +260,26 @@ What would it take to implement the undo feature? What needs to change?
 What is an undo feature really? Is it a mathematical operation? Let's consider that for a moment and
 go back to our childhood algebra and math lessons. Have you ever heard your math teacher say "Now we
 add 8, do that times 3, minus 1 and now we undo that last one". I haven't and it sounds a bit weird.
-That is because undo is not a mathematical operation! Which makes undo different from add, subtract, etc.
-
-It is more a meta-operation, or a command you can do. Add, subtract, multiply and square are
-operations.
+That is because undo is not a mathematical operation! Which makes undo sightly different from add, subtract, etc.
 
 **Tip**
-Whenever you are not sure what something is talk about it with other people and do some research.
+Whenever you are not sure about something talk about it with other people and do some research.
 This way you develop common understanding about domain you are working in. A great way to do that is
 also to stand around a white board and brainstorm. This also works great for working out a technical
 design!
+
+Discussing the undo with other people, it became clear that it is more a meta-operation, or a command you can do.
+Add, subtract, multiply and square are mathematical operations. We want to build something that keeps track of the commands that are given
+before we actually execute it. Knowing how to get the result is already present in the `Calculator`
+class. So let's build something separate from that. Note that we can always refactor and merge if
+necessary.
+
+Which still leaves one question that has been present in this episode. How do we test the moment of execution?
+The answer to that is that we can stub the calculator and assert the calls that are done to the
+calculator object. This includes the moment of the call.
+
+
+
 
 
 
