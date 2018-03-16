@@ -45,7 +45,7 @@ calculator is not working as expected.
 
 In these examples we are going to keep an array of operations we give the calculator.
 
-## Iteration
+### Traditional for-loop
 In this example we will use the traditional for-loop to go over the commands to get the results.
 Below is a code snippet that demonstrates the implementation for the add operation.
 
@@ -110,10 +110,10 @@ export class Calculator {
 }
 ```
 
-The problem with the growing if-else statements will still be there. We have just moved it.
+The problem with the growing if-else statements (or switch-cases) will still be there. We have just moved it.
 So let's keep experimenting.
 
-## More functional loop
+### More functional loop
 Another way would be to replace the traditional for-loop with a more functional approach, using the
 forEach method.
 
@@ -131,7 +131,7 @@ It looks cleaner than the previous example, but we have the same issues as befor
 method. A `forEach` is a nice way if you want to do something with each of the items in a list or
 array, without expecting a result back. Just to call a method to do something. So keep that in mind.
 
-## Reduce
+### Reduce
 The array object has a lot of nice methods by default. [Reduce][reduce] is one of those methods.
 It's a way to accumulate all the values in an array. And this is similar to what we want to do. So
 consider the following code:
@@ -153,13 +153,14 @@ still build the functionality with tests the traditional way and refactor it to 
 This way you also make sure you have covered all the cases. For example, what would happen if we change the `0` to
 `1`? It might sound trivial, but it would have a huge impact on our functionality!
 
-## Exercise
+### Exercise
 Play with your `Calculator` class and experiment with each implementation. Try to get it working for
 each operation. Ask yourself the question: "What would it take to implement another operation, e.g.
-exponentiation? What then needs to change?
+exponentiation? What needs to change in that situation?
 
-## Understanding the domain
+Can you make a solution using recursion?
 
+### Understanding the domain
 Let's say we have implemented all the existing operations using the `reduce` method. Below is the
 full version.
 
@@ -222,11 +223,11 @@ export class Calculator {
 We have not touched the tests and they should still be passing. We have added a `default` to the
 switch case to get an error whenever there is an unssupported operation passed. This is not tested.
 
-## Exercise
+### Exercise
 With help of [this site][refactoring] which code smells can you spot? Why would it be a code smell? Which
 refactoring techniques would you use?
 
-## Code smells
+### Code smells
 Let's go over the code above and sum up some code smells.
 
 * Switch-case
@@ -235,18 +236,52 @@ Let's go over the code above and sum up some code smells.
 
 > TODO: Work out the code smells.
 
-## How to test lazy evaluation?
+### Lambdas to the rescue!
+In one of the previous episodes we have talked about lambdas and used them as our operations
+functions. But there is another way we can use them that will simplify our code tremendously!
 
+```js
+// Pseudo-code
+
+this._commands = []
+this._commands.push( () => this._calculator.add(4) )
+```
+
+We push the lambda `() => this._calculator.add(4)` to the `this._commands` array / stack. By
+wrapping the actual code we want to execute in a lambda we delay the execution of that code. Until
+the point we actually call the lambda when we want to get the result. Isn't that a simple and
+elegant solution? With a bit of lambda magic we have eleminated the need for a switch case.
+
+But now we need to implement it for the entire calculator. Before we do that we are going to take a
+step back.
+
+## How to test lazy evaluation?
 We have done a lot of experimentation and learned a lot! From Javascript's traditional iterative
-style to a more modern functional style, and we have learned what code smells are.
+style to a more modern functional style, and we have learned what code smells are and the power of
+lambdas.
 
 But let's take a step back for the moment. We have different ways to implement lazy evaluation, but no
-way to test it. This is a signal that should be taken seriously. Normally we don't refactor unless
-there is a reason. If performance is a reason, then we should have something that shows that it is
-the case. But we don't have something like that.
+way to test it. This is a signal that should be taken seriously. Normally we don't refactor or write
+new functionality unless there is a reason. If performance is a reason, then we should have something that shows that it is
+the case in the form of a performance test. This also counts for the moment of evaluation. But we don't have something like that.
 Or we refactor our code because a new requirement came in and our current code doesn't support it
 yet. Normally you would add the new requirements using TDD and drive out the design from there,
 using The 4 Rules of Simple Design as our guide.
+
+## Approach
+Normally with TDD you would let the code determine your design and make new classes and methods when
+it is required. However in this case it's a bit difficult, because lazy evaluation is quite hard to
+test from a functional point of view. That's because it's a technical requirement.
+The only thing we can do is evaluate *when* a certain class or method was called. This is a technical approach and not a functional approach. Lazy evaluation is a
+technical feature, not necessarily a domain feature. Why would a user care when the result was
+calculated? As long as he/she gets a result in the end, right?
+
+It's a good idea not to implement nice technical features because we might need it, or it's nice to
+have. This also counts for the use of libraries. (One of the reasons we kept the use of libraries in
+these episodes to a minimum) Always ask yourself the questions, do we really need it? How does the
+customer benefit from this feature?
+
+Unless...
 
 ## Undo feature
 Our customer came to us and asked for the undo feature. When he added a number to his
@@ -278,7 +313,24 @@ Which still leaves one question that has been present in this episode. How do we
 The answer to that is that we can stub the calculator and assert the calls that are done to the
 calculator object. This includes the moment of the call.
 
+## CommandStack class
 
+```js
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+
+before(() => {
+  chai.use(sinonChai)
+});
+
+const spy = sinon.spy(calculator, 'add')
+
+stack.add(4)
+expect(spy).not.to.be.called
+
+expect(stack.execute()).to.eql(4)
+expect(spy).to.be.calledWith(4)
+```
 
 
 
