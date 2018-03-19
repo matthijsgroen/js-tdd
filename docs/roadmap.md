@@ -71,19 +71,31 @@ Stories, backlog
 
   - Lazy evaluation, spying, stubbing
 
-4. See result on display -> Interface
+4. As a user I want to see the result of my formula on the screen
+  
+  See result on display -> Interface
 
   - Interfaces / Ducktyping, separation of concerns, single responsibility
 
-5. Customize commands. (define chains, execute chains, undo should undo last executed chain)
+5. As user I want to manipulate the result using basic commands/operations
 
-  - Scaling up architecture (instead of commands in a chain, we go from chains in a chain as well) 
+  Customize commands. (use simple commands with single operation, +3, *5, etc)
 
-6. Add battery. Each execute drains the battery.
+6. As User I want to get feedback when I reached the set goal.
+
+7. As User I want to receive feedback if I do not reach the set goal within the allowed amount of moves.
+
+  Add battery. Each execute drains the battery.
 
   - This element turns it into a game, because a goal and lose scenario is added. But it hardly changes the core mechanics we established earlier
 
-7. Create single level
+
+8. As a user I want to append a number to the existing result
+
+  - Scaling up architecture (instead of commands in a chain, we go from chains in a chain as well) 
+
+9. Create single level
 
   - Wrap up. Also thinking about: How to seperate code from content? (level contents, multiple levels)
 
+  > when every goes well, there should not be a lot of code for a nice functional game. This is also the perfect moment to discuss how a developer spends its time between thinking and actually writing code. This is a nice stepping stone to discuss the value of Pair programming.
