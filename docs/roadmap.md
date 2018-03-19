@@ -99,3 +99,10 @@ Stories, backlog
   - Wrap up. Also thinking about: How to seperate code from content? (level contents, multiple levels)
 
   > when every goes well, there should not be a lot of code for a nice functional game. This is also the perfect moment to discuss how a developer spends its time between thinking and actually writing code. This is a nice stepping stone to discuss the value of Pair programming.
+  
+### Topics not yet covered:
+
+- Promises / Asynchronity
+- Regex
+- Exceptions
+- Immutability
