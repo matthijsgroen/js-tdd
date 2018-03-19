@@ -26,7 +26,7 @@ The process of refactoring is to structure software by applying a series of refa
 The last part is important, without changing its observable behaviour. Behaviour can be observed
 with tests and this way we can make sure it does not change while we are structuring our code.
 
-Now we know the code works, we could refactor the `functions` into a version with [lamda][lamdas],
+Now we know the code works, we could refactor the `functions` into a version with [lambdas][lambdas],
 this is the "Modern way" to define functions. They have a slightly different way how the scope works,
 but we get to that later 😅
 
@@ -61,7 +61,7 @@ be read as: "`export` the thing named `add` that is a `const`ant that expects th
 `left + right`". With the `const` we mean that we cannot assign a different value or function to the
 thing that is named `add`.
 
-Of course we always make sure that our tests keep passing when refactoring. To recommended way to do
+Of course we always make sure that our tests keep passing when refactoring. The recommended way to do
 this is to make tiny changes to our implementation while running the tests after each change. As
 soon as we do something wrong it will give us a signal and we can go back to the last change before
 it started breaking. Commiting our code regularly helps a great deal! Just reset and try again.
@@ -98,6 +98,6 @@ export const square = (number) => times(number, number)
 ```
 
 [episode2]: https://github.com/matthijsgroen/js-tdd/tree/master/episode2
-[lamda]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+[lambdas]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 [4rosd]: https://www.theguild.nl/4-rules-of-simple-design/
 [refactoring]: https://refactoring.com/

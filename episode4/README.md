@@ -294,7 +294,7 @@ result() {
 
 Javascript doesn't have the concept of private, so we need to develop the discipline to handle it as such ourselves.
 Technically we can still manipulate the `_result` however. But don't... just don't... you'll unleash
-the wrath of Chtulu.
+the wrath of Chtulhu.
 
 So, let's build a (temporary) test to demonstrate the differences. Tests are not only great ways to
 verify your code, but also to experiment. Just make sure start without any other changes in your git
